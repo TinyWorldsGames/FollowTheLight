@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Coin
   - poisonArea
+  - Safearea
   layers:
   - Default
   - TransparentFX
