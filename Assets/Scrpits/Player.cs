@@ -18,18 +18,20 @@ public class Player : MonoBehaviour
         {
             health -= 2 * Time.deltaTime;
         }
-        
+       
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.tag=="SafeArea")
-        safeArea = true;
+        
+        if (collision.tag.Equals("Safearea"))
+            safeArea = true;
 
 
     }
-    private void OnTriggerExit(Collider2D collision)
+
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "SafeArea")
+        if (collision.tag.Equals("Safearea"))
             safeArea = false;
     }
 
