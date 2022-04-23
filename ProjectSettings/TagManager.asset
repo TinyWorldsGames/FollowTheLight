@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Safearea
   - LevelPoint
+  - Firefly
+  - lamp
+  - torch
+  - button
   layers:
   - Default
   - TransparentFX

@@ -8,9 +8,9 @@ public class Player : MonoBehaviour
     public float health;
     public  int level;
     public List<GameObject> levelS;
-    public GameObject deneme;
+    public GameObject deneme,torch;
     public int fireFlyCount;
-
+    public SpriteMask spriteMask;
     void Start()
     {
         
@@ -19,17 +19,20 @@ public class Player : MonoBehaviour
  
     void Update()
     {
+        spriteMask.alphaCutoff = health / 100;
+
         if (!safeArea)
         {
-            health -= 2 * Time.deltaTime;
+            health -= 8 * Time.deltaTime;
         }
         if (Input.GetKeyDown(KeyCode.F))
         {
-            levelS[2].SetActive(true);
+            levelS[0].SetActive(true);
             deneme.gameObject.SetActive(true);
         }
 
-       
+
+     
       
 
         
@@ -59,13 +62,30 @@ public class Player : MonoBehaviour
             levelUp(level);
         }
 
-          if (collision.tag.Equals("lamp")&&fireFlyCount>=1&&!collision.gameObject.GetComponent<lamba>().firefly)
+        if (collision.tag.Equals("torch"))
         {
+           
+            Destroy(collision.gameObject);
+            torch.SetActive(true);
+
+        }
+
+        if (collision.tag.Equals("button"))
+        {
+            collision.gameObject.GetComponent<Animator>().enabled = true;
+            collision.gameObject.GetComponent<DoorM>().openDoor();
+        }
+
+
+
+        if (collision.tag.Equals("lamp")&&fireFlyCount>=1&&!collision.gameObject.GetComponentInChildren<lamba>().firefly)
+        {
+            Debug.Log("lamba");
             fireFlyCount--;
             collision.gameObject.GetComponent<lamba>().firefly = true;
         }
 
-        if (collision.tag.Equals("firefly"))
+        if (collision.tag.Equals("Firefly"))
         {
             Destroy(collision.gameObject);
             fireFlyCount++;

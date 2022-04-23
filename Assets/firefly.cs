@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class animation : MonoBehaviour
+public class firefly : MonoBehaviour
 {
-    public Animator animator;
+    // Start is called before the first frame update
     void Start()
     {
         
@@ -14,10 +14,5 @@ public class animation : MonoBehaviour
     void Update()
     {
         
-    }
-    public void JumpLoop()
-    {
-       
-        animator.SetBool("isJump", false);
     }
 }

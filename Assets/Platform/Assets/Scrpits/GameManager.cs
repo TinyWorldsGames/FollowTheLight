@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && (isGrounded || Time.time - lastTimeGrounded <= rememberGroundedFor))
         {
             animator.SetBool("isJump", true);
-            Debug.Log("True oldu");
+           
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
 
