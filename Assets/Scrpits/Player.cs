@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     public bool safeArea, noFireFly;
@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public GameObject deneme,torch;
     public int fireFlyCount;
     public SpriteMask spriteMask;
+    public Image blood;
     void Start()
     {
         
@@ -19,12 +20,23 @@ public class Player : MonoBehaviour
  
     void Update()
     {
-        spriteMask.alphaCutoff = health / 100;
+       // spriteMask.alphaCutoff = health / 100;
 
         if (!safeArea)
         {
             health -= 8 * Time.deltaTime;
+            blood.color = new Color32(255, 255, 255, 160);
         }
+        else
+        {
+            blood.color = new Color32(255, 255, 255, 0);
+        }
+
+
+
+
+
+
         if (Input.GetKeyDown(KeyCode.F))
         {
             levelS[0].SetActive(true);
