@@ -4,32 +4,38 @@ using UnityEngine;
 
 public class SunRotate : MonoBehaviour
 {
-    bool state1=true, state2;
-    public float maxZ, minZInspector;
-    private float minZ;
+   
     public float _rotationDegree=0;
     public float _rotationSpeed;
-    public bool rotation = false;
+    bool rotation=false;
+    public float zDegree;
 
-    Quaternion target;
     void Start()
     {
-        minZ = 360 + minZInspector;
-       
+        if (_rotationDegree < 0)
+        {
+            rotation = true;
+        }
+        if (_rotationDegree > 0)
+        {
+            rotation = false;
+        }
+
+
     }
 
     
     void Update()
 {
-        if(rotation && _rotationDegree < 30f)
+        if(rotation && _rotationDegree < zDegree)
         {
             _rotationDegree += Time.deltaTime * _rotationSpeed;
-            if (_rotationDegree >= 30f) { _rotationDegree = 30f; rotation = false; }
+            if (_rotationDegree >= zDegree) { _rotationDegree = zDegree; rotation = false; }
         }
-        else if(!rotation && _rotationDegree > -30f)
+        else if(!rotation && _rotationDegree > -zDegree)
         {
             _rotationDegree -= Time.deltaTime * _rotationSpeed;
-            if (_rotationDegree <= -30f) { _rotationDegree = -30f; rotation = true; }
+            if (_rotationDegree <= -zDegree) { _rotationDegree = -zDegree; rotation = true; }
         }
         transform.rotation = Quaternion.Euler(0, 0, _rotationDegree);
        

@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
         Jump();
         CheckIfGrounded();
         BetterJump();
-        Debug.Log(animator.GetBool("isJump"));
+      
         if (x == 0)
         {
               animator.SetBool("isWalking", false); 
