@@ -20,6 +20,7 @@ public class lights : MonoBehaviour
         for (int i = 0; i < lightsL.Length; i++)
         {
             lightsL[i].gameObject.SetActive(true);
+            Debug.Log("yaniyom");
         }
     }
 }

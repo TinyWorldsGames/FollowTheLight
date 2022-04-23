@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public bool safeArea;
+    public bool safeArea, noFireFly;
     public float health;
-    public  int level = 1;
+    public  int level;
     public List<GameObject> levelS;
     public GameObject deneme;
+    public int fireFlyCount;
 
     void Start()
     {
@@ -24,7 +25,7 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.F))
         {
-            levelS[0].SetActive(true);
+            levelS[2].SetActive(true);
             deneme.gameObject.SetActive(true);
         }
 
@@ -58,6 +59,17 @@ public class Player : MonoBehaviour
             levelUp(level);
         }
 
+          if (collision.tag.Equals("lamp")&&fireFlyCount>=1&&!collision.gameObject.GetComponent<lamba>().firefly)
+        {
+            fireFlyCount--;
+            collision.gameObject.GetComponent<lamba>().firefly = true;
+        }
+
+        if (collision.tag.Equals("firefly"))
+        {
+            Destroy(collision.gameObject);
+            fireFlyCount++;
+        }
 
 
     }
@@ -74,6 +86,7 @@ public class Player : MonoBehaviour
     public void endAnim()
     {
         levelS[level - 1].GetComponent<lights>().OpenLights();
+       
     }
 
 
