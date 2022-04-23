@@ -19,51 +19,48 @@ public class GameManager : MonoBehaviour
     public LayerMask groundLayer;
     private float rememberGroundedFor = 0.3f;
     public float lastTimeGrounded;
-    private Animator animator;
-    public int coin = 0;
-    public Text coinText; 
+    public Animator animator;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+      
     }
 
     void Update()
     {
-        coinText.text = coin.ToString(); 
         Move();
         Jump();
         CheckIfGrounded();
         BetterJump();
-        if ( x==0)
+        Debug.Log(animator.GetBool("isJump"));
+        if (x == 0)
         {
-            animator.SetBool("isWalking", false); 
+              animator.SetBool("isWalking", false); 
         }
         else 
         {
-            animator.SetBool("isWalking", true);
+              animator.SetBool("isWalking", true);
         }
     }
     void Move()
     {
-        //x = Input.GetAxis("Horizontal");
 
-        //if (Input.GetKeyDown(KeyCode.W))
-        //{
-        //    Debug.Log("1 ");
-        //}
+
+        
 
 
         if (Input.GetKey(KeyCode.D))
         {
             x = 1;
             transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
+           
         }
         else if (Input.GetKey(KeyCode.A))
         {
             x = -1;
             transform.rotation = Quaternion.Euler(transform.rotation.x, 180, transform.rotation.z);
-            
+
 
         }
         else
@@ -80,7 +77,8 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && (isGrounded || Time.time - lastTimeGrounded <= rememberGroundedFor))
         {
-            animator.SetBool("isJumping", true);
+            animator.SetBool("isJump", true);
+            Debug.Log("True oldu");
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
 
@@ -111,10 +109,11 @@ public class GameManager : MonoBehaviour
         if (collider != null)
         {
             isGrounded = true;
-            animator.SetBool("isJumpLoop", false);
+           
         }
         else
         {
+          
             isGrounded = false;
         }
     }
@@ -130,19 +129,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void JumpLoop ()
-    {
-        animator.SetBool("isJumping", false);
-        animator.SetBool("isJumpLoop", true);
-    }
+    //void JumpLoop()
+    //{
+    //    animator.SetBool("isJump", false);
+    //    animator.SetBool("isFirstTouch", true);
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Coin")
-        {
-            coin++;
-            Destroy(collision.gameObject);
-        }
+    //}
 
-    }
 }
