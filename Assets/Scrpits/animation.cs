@@ -5,6 +5,7 @@ using UnityEngine;
 public class animation : MonoBehaviour
 {
     public Animator animator;
+    public Player playerS;
     void Start()
     {
         
@@ -20,4 +21,9 @@ public class animation : MonoBehaviour
        
         animator.SetBool("isJump", false);
     }
+    public void Restart()
+    {
+        playerS.deathMenu();
+
+}
 }
