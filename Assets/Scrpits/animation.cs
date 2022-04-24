@@ -23,6 +23,7 @@ public class animation : MonoBehaviour
     }
     public void Restart()
     {
+        animator.SetBool("isDead", false);
         playerS.deathMenu();
 
 }
