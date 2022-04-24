@@ -49,8 +49,10 @@ public class Player : MonoBehaviour
 
         if (health <= 0)
         {
-            animator.SetBool("isDead",true);
+         //   animator.SetBool("isDead",true);
             healthBarO.SetActive(false);
+            deathMenu();
+           transform.position = Vector2.zero;
         }
 
 
@@ -85,6 +87,9 @@ public class Player : MonoBehaviour
             safeArea = true;
         } 
 
+
+
+
     else  if (collision.tag.Equals("antiSafe")&&!torch.gameObject.active)
         {
             safeArea = false;
@@ -111,6 +116,14 @@ public class Player : MonoBehaviour
           
         }
 
+        if (collision.tag.Equals("final"))
+        {
+            level = 0;
+            anamenu.SetActive(true);
+        }
+
+
+
         if (collision.tag.Equals("torch"))
         {
            
@@ -136,7 +149,7 @@ public class Player : MonoBehaviour
 
         if (collision.tag.Equals("Firefly"))
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
             fireFlyCount++;
         }
 

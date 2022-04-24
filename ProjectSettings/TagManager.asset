@@ -12,6 +12,7 @@ TagManager:
   - button
   - antiSafe
   - empty
+  - final
   layers:
   - Default
   - TransparentFX
