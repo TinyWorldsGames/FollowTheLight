@@ -7,13 +7,15 @@ public class SunRotate : MonoBehaviour
    
     public float _rotationDegree=0;
     public float _rotationSpeed;
-    bool rotation = true;
+    public bool rotation = true;
     public float zDegree, zDegreeN;
     public bool flipflopp;
     public Animator animator;
-
+    public float startDegree;
     void Start()
     {
+       
+
         if (_rotationDegree < 0)
         {
             rotation = true;
@@ -50,4 +52,19 @@ public class SunRotate : MonoBehaviour
         
       
     }
+
+    private void OnEnable()
+    {
+        GetComponentInChildren<SunRotate>()._rotationDegree = startDegree;
+        if (_rotationDegree < 0)
+        {
+            rotation = true;
+        }
+        if (_rotationDegree > 0)
+        {
+            rotation = false;
+        }
+    }
+
+
 }

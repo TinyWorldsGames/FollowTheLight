@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class lights : MonoBehaviour
 {
-    public GameObject[] lightsL;
+    public GameObject[] lightsL, Openobjects,Closeobjects;
     void Start()
     {
         
@@ -20,7 +20,36 @@ public class lights : MonoBehaviour
         for (int i = 0; i < lightsL.Length; i++)
         {
             lightsL[i].gameObject.SetActive(true);
-            Debug.Log("yaniyom");
+          
         }
     }
+   public void OpenObjects()
+
+    {
+        for (int i = 0; i < Openobjects.Length; i++)
+        {
+
+            Openobjects[i].gameObject.SetActive(true);
+
+            
+        }
+
+
+     
+    }
+    public void CloseObjects()
+
+    {
+        for (int i = 0; i < Closeobjects.Length; i++)
+        {
+
+            Closeobjects[i].gameObject.SetActive(false);
+
+
+        }
+
+
+
+    }
+
 }

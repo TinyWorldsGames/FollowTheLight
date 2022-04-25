@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class startAnim : MonoBehaviour
 {
     public Text text;
+    public Text text2;
     public GameObject menu;
 
 
@@ -18,9 +19,10 @@ public class startAnim : MonoBehaviour
     
     void Update()
     {
-        if(text.transform.position.y>= 300.0001)
+        if(text.transform.position.y>= 315.0001||Input.anyKey)
         {
             text.enabled = false;
+            text2.enabled = false;
             menu.SetActive(true);
             Destroy(gameObject);
         }

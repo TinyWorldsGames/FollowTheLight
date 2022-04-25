@@ -20,7 +20,16 @@ public class lamba : MonoBehaviour
         {
             light.gameObject.SetActive(true);
         }
+        if (!firefly)
+        {
+            light.gameObject.SetActive(false);
+        }
 
 
+    }
+    private void OnEnable()
+    {
+        firefly = false;
+        
     }
 }
